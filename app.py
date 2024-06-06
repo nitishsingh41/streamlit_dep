@@ -3,14 +3,14 @@ import numpy as np
 from transformers import BertTokenizer, BertForSequenceClassification
 import torch
 
-@st.cache(allow_output_mutation=True)
-def get_model():
-    tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
-    model = BertForSequenceClassification.from_pretrained("pnichite/YTFineTuneBert")
-    return tokenizer,model
+#@st.cache(allow_output_mutation=True)
+#def get_model():
+tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
+model = BertForSequenceClassification.from_pretrained("pnichite/YTFineTuneBert")
+#    return tokenizer,model
 
 
-tokenizer,model = get_model()
+#tokenizer,model = get_model()
 
 user_input = st.text_area('Enter Text to Analyze')
 button = st.button("Predict")
