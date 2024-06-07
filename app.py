@@ -20,7 +20,7 @@ d = {
   1:'Toxic',
   0:'Non Toxic'
 }
-
+st.write('here')
 if user_input and button :
     with st.spinner('Predicting...'):
         st.write(user_input)
