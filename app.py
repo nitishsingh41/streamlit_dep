@@ -8,7 +8,7 @@ import torch
 tokenizer = BertTokenizer.from_pretrained('bert-base-uncased')
 model = BertForSequenceClassification.from_pretrained("pnichite/YTFineTuneBert").half()
 #    return tokenizer,model
-
+st.write('model loaded')
 
 #tokenizer,model = get_model()
 
