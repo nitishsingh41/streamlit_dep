@@ -22,12 +22,12 @@ d = {
 }
 
 if user_input and button :
-    st.write('1')
-    test_sample = tokenizer([user_input], padding=True, truncation=True, max_length=512,return_tensors='pt')
+    st.write(user_input)
+'''    test_sample = tokenizer([user_input], padding=True, truncation=True, max_length=512,return_tensors='pt')
     # test_sample
     st.write('2')
     output = model(**test_sample)
     st.write("Logits: ",output.logits)
     y_pred = np.argmax(output.logits.detach().numpy(),axis=1)
-    st.write("Prediction: ",d[y_pred[0]])
+    st.write("Prediction: ",d[y_pred[0]])'''
     st.stop()
