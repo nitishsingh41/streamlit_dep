@@ -30,7 +30,8 @@ if user_input and button :
     st.write(user_input)
     test_sample = tokenizer([user_input], padding=True, truncation=True, max_length=512,return_tensors='pt')
     test_sample = {k: v.half() for k, v in test_sample.items()}
-    test_sample=test_sample.long()
+    test_sample['input_ids'] = test_sample['input_ids'].long()
+
     # test_sample
     st.write('2')
     output = model(**test_sample)
