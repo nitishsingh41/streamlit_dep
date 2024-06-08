@@ -11,7 +11,7 @@ import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 
 tokenizer = AutoTokenizer.from_pretrained("agi-css/distilbert-base-uncased-finetuned-toxicity")
-model = AutoModelForSequenceClassification.from_pretrained("agi-css/distilbert-base-uncased-finetuned-toxicity").half()
+model = AutoModelForSequenceClassification.from_pretrained("agi-css/distilbert-base-uncased-finetuned-toxicity")
 #    return tokenizer,model
 st.write('model loaded')
 
@@ -29,12 +29,12 @@ st.write('here')
 if user_input and button :
     st.write(user_input)
     test_sample = tokenizer([user_input], padding=True, truncation=True, max_length=512,return_tensors='pt')
-    test_sample = {k: v.half() for k, v in test_sample.items()}
-    test_sample['input_ids'] = test_sample['input_ids'].long()
+
 
     # test_sample
     st.write('2')
-    output = model(**test_sample)
+    with torch.no_grad(): 
+        output = model(**test_sample)
     st.write("Logits: ",output.logits)
     y_pred = np.argmax(output.logits.detach().numpy(),axis=1)
     st.write("Prediction: ",d[y_pred[0]])
